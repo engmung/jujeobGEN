@@ -19,6 +19,16 @@ const ResultCard: React.FC<ResultCardProps> = ({ content }) => {
   };
 
   const handleShare = async () => {
+    // Check if running in in-app browser (KakaoTalk, Instagram, etc.)
+    const isInAppBrowser = /KAKAOTALK|Instagram|FBAN|FBAV/i.test(navigator.userAgent);
+
+    if (isInAppBrowser) {
+      // In-app browsers don't support navigator.share well, just copy
+      handleCopy();
+      alert('텍스트가 복사되었습니다!\n원하는 곳에 붙여넣기 해주세요 📋');
+      return;
+    }
+
     if (navigator.share) {
       try {
         await navigator.share({
@@ -26,11 +36,13 @@ const ResultCard: React.FC<ResultCardProps> = ({ content }) => {
         });
       } catch (err) {
         console.log('Error sharing:', err);
+        // If share fails, fallback to copy
+        handleCopy();
       }
     } else {
       // Fallback for desktop or unsupported browsers: Copy content
       handleCopy();
-      alert('공유하기 기능은 모바일에서 최적화되어 있습니다.\n텍스트가 복사되었습니다!');
+      alert('텍스트가 복사되었습니다!\n원하는 곳에 붙여넣기 해주세요 📋');
     }
   };
 
