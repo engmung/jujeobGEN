@@ -66,7 +66,7 @@ const App: React.FC = () => {
                 id="name"
                 label="상대"
                 value={formData.name}
-                placeholder="예: 카리나, 엄마"
+                placeholder="예: 엄마, 카리나"
                 onChange={(e) => handleInputChange('name', e.target.value)}
                 required
               />
