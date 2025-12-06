@@ -13,7 +13,7 @@ export default async function handler(req: Request) {
 
     // Fetch Pretendard font
     const fontData = await fetch(
-      new URL('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2', import.meta.url)
+      'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2'
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
