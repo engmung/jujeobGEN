@@ -85,7 +85,7 @@ const App: React.FC = () => {
               id="description"
               label="한줄 소개 (선택)"
               value={formData.description}
-              placeholder="예: 이쁨, 생일축하메시지"
+              placeholder="예: 이쁨, 생일축하"
               onChange={(e) => handleInputChange('description', e.target.value)}
             />
 
